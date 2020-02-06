@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Artist(models.Model):
     name = models.CharField(max_length=150)
 
@@ -19,9 +20,8 @@ class Song(models.Model):
 class Fact(models.Model):
     song = models.ForeignKey(Song, on_delete=models.PROTECT)
     content = models.TextField()
-    writtenBy = models.CharField(max_length=150)
 
     def __str__(self):
-        return f"{self.content} \n נכתב על ידי {self.writtenBy}"
+        return self.content
 
 

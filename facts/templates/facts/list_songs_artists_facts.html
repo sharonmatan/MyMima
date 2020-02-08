@@ -1,0 +1,33 @@
+{% extends "facts/base.html" %}
+
+{% block h2 %}
+    {{ artist.name }}
+{% endblock %}
+
+{% block p %}
+    <div>
+{#        {{% if list_of_artists != "<QuerySet []>" %}}#}
+        <h2>תוצאות באמנים:</h2> <br>
+        {{ list_of_artists }} <br>
+{#        {{% endif %}}#}
+{#        {{% if list_of_songs > 0 %}}#}
+        <h2>תוצאות בשירים:</h2> <br>
+        {{ list_of_songs }} <br>
+{#        {{% endif %}}#}
+{#        {{% if list_of_facts > 0 %}}#}
+        <h2>עובדות שקשורות:</h2>
+        {{ list_of_facts }}
+{#        {{% endif %}}#}
+
+        {##}
+        {#                {{% for song in list_of_songs %}}#}
+        {#                {{ song }}#}
+        {#                {{% endfor %}}#}
+        {##}
+        {#        {{% for fact in list_of_facts %}}#}
+        {#        {{ fact }}#}
+        {#        {{% endfor %}}#}
+
+
+    </div>
+{% endblock %}

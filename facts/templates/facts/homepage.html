@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+<body dir="rtl">
+
+<a class="logo" href="{% url 'homepage' %}"><img src="{% static 'images/logo5.gif' %}" alt="My image"></a>
+<form action="/search_results" method="GET">
+    {% csrf_token %}
+    <input type="text" name="search" id="choice">
+    <input type="submit" value="הולך מחפשת">
+</form>
+<table>
+    <tr class="artist_letter">
+        <p>
+            חפש לפי שם אומן:
+        </p>
+        {% for letter in letters_list %}
+            <td bgcolor="#CCFFCC"><a href="{% url 'artist' letter %}"> {{ letter }} </a></td>
+        {% endfor %}
+    </tr>
+</table>
+<table>
+    <tr class="song_letter">
+        <p>
+            חפש לפי שם שיר:
+        </p>
+        {% for letter in letters_list %}
+            <td bgcolor="#CCFFCC"><a href="{% url 'song' letter %}"> {{ letter }} </a></td>
+        {% endfor %}
+    </tr>
+</table>
+</body>
+</html>

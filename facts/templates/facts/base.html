@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .header {
+            height: 18vh;
+        }
+
+        body {
+
+        }
+
+        .all_letters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+
+        }
+
+        .fact-table {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .fact1 {
+            margin: 2px;
+            padding: 4px;
+            width: 60vw;
+            background-color: #EDF3FE;
+            height: content-box;
+        }
+
+        .fact2 {
+            margin: 2px;
+            padding: 4px;
+            width: 60vw;
+            background-color: #CBFFCC;
+            height: content-box;
+        }
+
+        .base-header {
+            border-bottom: 4px solid #800000;
+        }
+
+        .artist_letter, .song_letter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .mima-logo {
+            width: 17vw;
+        }
+
+        .mima-search {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row;
+        }
+
+    </style>
+</head>
+<body dir="rtl">
+<div class="header">
+    <div class="mima-search">
+        <a class="logo" href="{% url 'homepage' %}"><img class="mima-logo" src="{% static 'images/logo5.gif' %}"
+                                                         alt="My image"></a>
+
+        <input type="text" name="search" id="choice">
+        <input type="submit" value="הולך מחפשת">
+    </div>
+    <table>
+        <div class="all_letters">
+            <tr class="artist_letter">
+                <td>
+                    חפש לפי שם אומן:
+                </td>
+                {% for letter in letters_list %}
+                    <td bgcolor="#CCFFCC"><a href="{% url 'artist' letter %}"> {{ letter }} </a></td>
+                {% endfor %}
+                <td>
+                    חפש לפי שם שיר:
+                </td>
+                {% for letter in letters_list %}
+                    <td bgcolor="#CCFFCC"><a href="{% url 'song' letter %}"> {{ letter }} </a></td>
+                {% endfor %}
+            </tr>
+        </div>
+    </table>
+</div>
+<div class="base-header">
+</div>
+<div class="main-page">
+    <h1>{% block h1 %}{% endblock %}</h1>
+    <h2>{% block h2 %}{% endblock %}</h2>
+    <p>{% block p %}{% endblock %}</p>
+
+
+</div>
+</body>
+</html>

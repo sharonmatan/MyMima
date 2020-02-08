@@ -1,0 +1,14 @@
+{% extends "facts/base.html" %}
+
+{% block h2 %}
+    {{ song.title }}
+{% endblock %}
+
+{% block h4 %}
+    {{ song.artist.name }}
+{% endblock %}
+{% block p %}
+    {% for artist in list_of_artists %}
+        <a href="{% url 'name' artist.id %}">{{ artist.name }}</a><br>
+    {% endfor %}
+{% endblock %}

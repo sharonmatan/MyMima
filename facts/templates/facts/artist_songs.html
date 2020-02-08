@@ -1,0 +1,11 @@
+{% extends "facts/base.html" %}
+
+{% block h2 %}
+    {{ artist.name }}
+{% endblock %}
+
+{% block p %}
+    {% for song in artist.song_set.all %}
+        <p><a href="{% url 'song' song.id %}">{{ song }}</a> </p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "facts/base.html" %}
+
+{% block h1 %}
+    {{ song.title }}
+{% endblock %}
+
+{% block h2 %}
+    {{ song.artist.name }}
+{% endblock %}
+
+{% block p %}
+    <div class = "fact-table">
+    {% for fact in song.facts.all %}
+            <div class="{% cycle 'fact1' 'fact2' %}">{{ fact }}</div>
+    {% endfor %}
+    </div>
+{% endblock %}

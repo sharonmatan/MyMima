@@ -9,9 +9,9 @@
 {% endblock %}
 
 {% block p %}
-    <div class = "fact-table">
-    {% for fact in song.facts.all %}
-            <div class="{% cycle 'fact1' 'fact2' %}">{{ fact }}</div>
-    {% endfor %}
+    <div class="fact-table">
+        {% for fact in song.facts.all %}
+            <div class="{% cycle 'fact1' 'fact2' %}">{{ fact }}<br>נכתב ע״י{{ fact.written_by }}</div>
+        {% endfor %}
     </div>
 {% endblock %}

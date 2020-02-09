@@ -53,7 +53,7 @@ https://www.mima.co.il/song_letter.php?let=%D7%90
     * optional: media
     
 * #### to run the crawler:
-    * run create_songs after making a new migration
+    * run create_song after making a new migration
 
     
    

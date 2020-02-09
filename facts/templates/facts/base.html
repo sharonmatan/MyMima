@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>מימה - </title>
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'images/logo-mima--rinat.gif' %}">
     <style>
         .header {
             height: 18vh;
@@ -23,7 +24,7 @@
 
         .fact-table {
             display: flex;
-            justify-content: start;
+            justify-content: center;
             align-items: center;
             flex-direction: column;
 
@@ -74,9 +75,11 @@
     <div class="mima-search">
         <a class="logo" href="{% url 'homepage' %}"><img class="mima-logo" src="{% static 'images/logo5.gif' %}"
                                                          alt="My image"></a>
-
-        <input type="text" name="search" id="choice">
-        <input type="submit" value="הולך מחפשת">
+        <form action="/search_results" method="GET">
+            {% csrf_token %}
+            <input type="text" name="search" id="choice">
+            <input type="submit" value="הולך מחפשת">
+        </form>
     </div>
     <table>
         <div class="all_letters">
@@ -85,13 +88,13 @@
                     חפש לפי שם אומן:
                 </td>
                 {% for letter in letters_list %}
-                    <td bgcolor="#CCFFCC"><a href="{% url 'artist' letter %}"> {{ letter }} </a></td>
+                    <td bgcolor="#CCFFCC"><a href="{% url 'artiststartwith' letter %}"> {{ letter }} </a></td>
                 {% endfor %}
                 <td>
                     חפש לפי שם שיר:
                 </td>
                 {% for letter in letters_list %}
-                    <td bgcolor="#CCFFCC"><a href="{% url 'song' letter %}"> {{ letter }} </a></td>
+                    <td bgcolor="#CCFFCC"><a href="{% url 'songstartwith' letter %}"> {{ letter }} </a></td>
                 {% endfor %}
             </tr>
         </div>

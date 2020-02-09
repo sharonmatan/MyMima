@@ -48,7 +48,7 @@ def artist_songs(request, id):
 def search_results(request):
     x = str(request.GET["search"])
     print(x)
-    list_of_artists = Artist.objects.filter(name__contains=x).values_list('name')
+    list_of_artists = Artist.objects.filter(name__contains=x)
     print(list_of_artists)
     list_of_songs = Song.objects.filter(title__contains=x)
     list_of_facts = Fact.objects.filter(content__contains=x)

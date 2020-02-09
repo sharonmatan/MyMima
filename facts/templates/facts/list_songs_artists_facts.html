@@ -6,28 +6,27 @@
 
 {% block p %}
     <div>
-{#        {{% if list_of_artists != "<QuerySet []>" %}}#}
+        {#        {{% if list_of_artists != "<QuerySet []>" %}}#}
         <h2>תוצאות באמנים:</h2> <br>
-        {{ list_of_artists }} <br>
-{#        {{% endif %}}#}
-{#        {{% if list_of_songs > 0 %}}#}
+        {% for artist in list_of_artists %}
+            <div><a href="{% url 'name' artist.id %} ">{{ artist }}</a></div>
+        {% endfor %}
+        {#        {{% endif %}}#}
+        {#        {{% if list_of_songs > 0 %}}#}
         <h2>תוצאות בשירים:</h2> <br>
-        {{ list_of_songs }} <br>
-{#        {{% endif %}}#}
-{#        {{% if list_of_facts > 0 %}}#}
+        {% for song in list_of_songs.all %}
+            <div><a href="{% url 'song' song.id %}">{{ song }}</a> - {{ song.artist }}</div>
+        {% endfor %}
+        {#        {{% endif %}}#}
+        {#        {{% if list_of_facts > 0 %}}#}
         <h2>עובדות שקשורות:</h2>
-        {{ list_of_facts }}
-{#        {{% endif %}}#}
 
-        {##}
-        {#                {{% for song in list_of_songs %}}#}
-        {#                {{ song }}#}
-        {#                {{% endfor %}}#}
-        {##}
-        {#        {{% for fact in list_of_facts %}}#}
-        {#        {{ fact }}#}
-        {#        {{% endfor %}}#}
+        {% for fact in list_of_facts.all %}
+            {#        {{ list_of_facts }}#}
+            {#<a href="{% url 'song' song.id %}">{{ song }}</a>#}
+            <div class="{% cycle 'fact1' 'fact2' %}"><a href="{% url 'song' fact.song.id %}">{{ fact.song }}</a>
+                - {{ fact.song.artist }}<br>{{ fact }}</div>
 
-
+        {% endfor %}
     </div>
 {% endblock %}

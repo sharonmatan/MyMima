@@ -2,25 +2,24 @@ from django.db import models
 
 
 class Artist(models.Model):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=100)
 
-    def __str__(self):
+    def _str_(self):
         return self.name
 
 
 class Song(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.PROTECT)
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=200)
 
-    def __str__(self):
+    def _str_(self):
         return self.title
 
 
 class Fact(models.Model):
-    song = models.ForeignKey(Song, on_delete=models.PROTECT, related_name='facts')
+    song = models.ForeignKey(Song, on_delete=models.PROTECT, related_name='facts', blank=True, null=True)
     content = models.TextField()
-    # written_by = models.CharField(max_length=150)
+    written_by = models.CharField(max_length=200, blank=True, null=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.content
-
